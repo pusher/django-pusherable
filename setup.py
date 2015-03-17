@@ -4,14 +4,14 @@
 import os
 import sys
 
-import poan
+import pusherable
 
 try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
 
-version = poan.__version__
+version = pusherable.__version__
 
 if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
@@ -23,15 +23,15 @@ if sys.argv[-1] == 'publish':
 readme = open('README.rst').read()
 
 setup(
-    name='django-poan',
+    name='django-pusherable',
     version=version,
     description="""Real time object access notifications via Pusher""",
     long_description=readme,
     author='Aaron Bassett',
     author_email='aaron@rawtech.io',
-    url='https://github.com/Rawtechio/django-poan',
+    url='https://github.com/pusher/django-pusherable',
     packages=[
-        'poan',
+        'pusherable',
     ],
     include_package_data=True,
     install_requires=[
@@ -39,7 +39,7 @@ setup(
     ],
     license="BSD",
     zip_safe=False,
-    keywords='django-poan',
+    keywords='django-pusherable',
     classifiers=[
         'Framework :: Django',
         'Intended Audience :: Developers',

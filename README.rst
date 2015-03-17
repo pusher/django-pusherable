@@ -1,5 +1,5 @@
 =============================
-django-poan
+django-pusherable
 =============================
 
 Real time object access notifications via Pusher
@@ -7,11 +7,11 @@ Real time object access notifications via Pusher
 Quickstart
 ----------
 
-Install django-poan::
+Install django-pusherable::
 
-    pip install django-poan
+    pip install django-pusherable
 
-Then add `poan` to your `INSTALLED_APPS`. You will also need to add your pusher
+Then add `pusherable` to your `INSTALLED_APPS`. You will also need to add your pusher
 keys to your settings. These are available on your app keys page.::
 
     PUSHER_APP_ID = u""
@@ -20,7 +20,7 @@ keys to your settings. These are available on your app keys page.::
 
 To begin receiving notifications about an object use the mixins.::
 
-    from poan.mixins import PusherDetailMixin, PusherUpdateMixin
+    from pusherable.mixins import PusherDetailMixin, PusherUpdateMixin
 
     class PostDetail(PusherDetailMixin, DetailView):
         model = Post
@@ -35,25 +35,25 @@ accessed as well as the user.
 
 To subscribe to these events on your page you can use the templatetags.::
 
-    {% load poan_tags %}
+    {% load pusherable_tags %}
 
-    {% poan_script %}
+    {% pusherable_script %}
 
-The `poan_script` tag will include the Pusher library. Place this in the
+The `pusherable_script` tag will include the Pusher library. Place this in the
 head of your page.::
 
-    {% poan_subscribe 'update' object %}
+    {% pusherable_subscribe 'update' object %}
 
-The `poan_subscribe` tag will begin subscribe you to the channel for the
+The `pusherable_subscribe` tag will begin subscribe you to the channel for the
 object. The first argument is the type of event you want to subscribe to.
 The default events are `update` and `view`.
 
 When a new event is received it will pass event type and data to a Javascript
-function called `poan_notify`. Create this function and use it to alert your
+function called `pusherable_notify`. Create this function and use it to alert your
 users to the new event. For example::
 
     <script>
-        function poan_notify(event, data) {
+        function pusherable_notify(event, data) {
             alert(data.user + "has begun to " + event + " " + data.object);
         }
     </script>
