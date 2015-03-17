@@ -1,0 +1,4 @@
+include CONTRIBUTING.rst
+include LICENSE
+include README.rst
+recursive-include poan *.html *.png *.gif *js *.css *jpg *jpeg *svg *py
