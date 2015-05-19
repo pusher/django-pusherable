@@ -37,13 +37,13 @@ To begin receiving notifications about an object use the mixins.::
         form_class = PostUpdateForm
 
 When the view is accessed it will send an event on the channel
-`modelname_pk` which contains a JSON representation of the object being
-accessed as well as the user.
+`modelname_pk` which contains a JSON representation of the object (model instance)
+being accessed as well as the user.
 
 The data will be in the form:
 
     {
-      "model": {
+      "object": {
         "question": "What's up?",
         "pub_date": "2013-08-08T11:16:24",
         "id": 1
@@ -51,7 +51,7 @@ The data will be in the form:
       "user": "admin"
     }
     
-Which fields are included and excluded within the `model` is configurable via
+Which fields are included and excluded within the `object` is configurable via
 `pusher_include_model_fields` and `pusher_exclude_model_fields`. For example, 
 the following would exclude the `pub_date` from the event payload:
 
