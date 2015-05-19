@@ -47,6 +47,8 @@ class PusherMixin(object):
 class PusherUpdateMixin(PusherMixin):
     pusher_event_name = u"update"
 
-
 class PusherDetailMixin(PusherMixin):
     pusher_event_name = u"view"
+    
+class PusherDeleteMixin(PusherMixin):
+    pusher_event_name = u"delete"
