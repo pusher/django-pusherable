@@ -2,21 +2,28 @@
 django-pusherable
 =============================
 
-Real time object access notifications via Pusher
+Real-time object access notifications via [Pusher](https://pusher.com)
 
-Quickstart
-----------
+Installation
+------------
 
 Install django-pusherable::
 
     pip install django-pusherable
+    
 
-Then add `pusherable` to your `INSTALLED_APPS`. You will also need to add your pusher
-keys to your settings. These are available on your app keys page.::
+Configuration
+-------------
+
+Then add `pusherable` to your `INSTALLED_APPS`. You will also need to add your Pusher
+app credentials to `settings.py`. These are available on your app keys page.::
 
     PUSHER_APP_ID = u""
     PUSHER_KEY = u""
     PUSHER_SECRET = u""
+
+Mixins
+------
 
 To begin receiving notifications about an object use the mixins.::
 
@@ -30,8 +37,31 @@ To begin receiving notifications about an object use the mixins.::
         form_class = PostUpdateForm
 
 When the view is accessed it will send an event on the channel
-`modelname_pk` which contains some information about the object being
-accessed as well as the user.
+`modelname_pk` which contains a JSON representation of the object (model instance)
+being accessed as well as the user.
+
+The data will be in the form:
+
+    {
+      "object": {
+        "question": "What's up?",
+        "pub_date": "2013-08-08T11:16:24",
+        "id": 1
+      },
+      "user": "admin"
+    }
+    
+Which fields are included and excluded within the `object` is configurable via
+`pusher_include_model_fields` and `pusher_exclude_model_fields`. For example, 
+the following would exclude the `pub_date` from the event payload:
+
+    class PostUpdate(PusherUpdateMixin, UpdateView):
+        model = Post
+        form_class = PostUpdateForm
+        pusher_exclude_model_fields = 'pub_date'
+
+Template tags
+-------------
 
 To subscribe to these events on your page you can use the templatetags.::
 
@@ -54,6 +84,7 @@ users to the new event. For example::
 
     <script>
         function pusherable_notify(event, data) {
-            alert(data.user + "has begun to " + event + " " + data.object);
+            alert(data.user + "has begun to " + event + " " + data.model);
         }
     </script>
+    
