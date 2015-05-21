@@ -2,7 +2,9 @@
 django-pusherable
 =============================
 
-Real-time object access notifications via [Pusher](https://pusher.com)
+Real-time object access notifications via Pusher_
+
+.. _Pusher: https://pusher.com
 
 Installation
 ------------
