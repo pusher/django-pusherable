@@ -10,7 +10,7 @@ Installation
 Install django-pusherable::
 
     pip install django-pusherable
-    
+
 
 Configuration
 -------------
@@ -50,9 +50,9 @@ The data will be in the form:
       },
       "user": "admin"
     }
-    
+
 Which fields are included and excluded within the `object` is configurable via
-`pusher_include_model_fields` and `pusher_exclude_model_fields`. For example, 
+`pusher_include_model_fields` and `pusher_exclude_model_fields`. For example,
 the following would exclude the `pub_date` from the event payload:
 
     class PostUpdate(PusherUpdateMixin, UpdateView):
@@ -87,4 +87,11 @@ users to the new event. For example::
             alert(data.user + "has begun to " + event + " " + data.model);
         }
     </script>
-    
+
+Running Tests
+-------------
+
+Pusherable comes with test requirements and a test runner.::
+
+    pip install -r requirements-test.txt
+    python runtests.py
