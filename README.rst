@@ -97,3 +97,11 @@ Pusherable comes with test requirements and a test runner.::
 
     pip install -r requirements-test.txt
     python runtests.py
+    
+
+Credits
+-------
+
+django-pusherable was built by `Aaron Bassett`_ for Pusher.
+
+.. _Aaron Bassett: https://twitter.com/aaronbassett

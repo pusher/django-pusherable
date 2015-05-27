@@ -27,8 +27,8 @@ setup(
     version=version,
     description="""Real time object access notifications via Pusher""",
     long_description=readme,
-    author='Aaron Bassett',
-    author_email='aaron@rawtech.io',
+    author='Aaron Bassett, Pusher',
+    author_email='aaron@rawtech.io, support@pusher.com',
     url='https://github.com/pusher/django-pusherable',
     packages=[
         'pusherable',
