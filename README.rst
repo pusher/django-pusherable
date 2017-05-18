@@ -23,6 +23,7 @@ app credentials to `settings.py`. These are available on your app keys page.::
     PUSHER_APP_ID = u""
     PUSHER_KEY = u""
     PUSHER_SECRET = u""
+    PUSHER_CLUSTER = u""
 
 Mixins
 ------
@@ -97,7 +98,7 @@ Pusherable comes with test requirements and a test runner.::
 
     pip install -r requirements-test.txt
     python runtests.py
-    
+
 
 Credits
 -------
