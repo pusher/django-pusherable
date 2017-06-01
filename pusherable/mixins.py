@@ -22,10 +22,15 @@ class PusherMixin(object):
 
         data = self.__object_to_json_serializable(self.object)
 
+        try:
+            pusher_cluster = settings.PUSHER_CLUSTER
+        except AttributeError:
+            pusher_cluster = 'mt1'
+
         pusher = Pusher(app_id=settings.PUSHER_APP_ID,
                         key=settings.PUSHER_KEY,
                         secret=settings.PUSHER_SECRET,
-                        cluster=settings.PUSHER_CLUSTER or 'mt1')
+                        cluster=pusher_cluster)
         pusher.trigger(
             [channel, ],
             self.pusher_event_name,
