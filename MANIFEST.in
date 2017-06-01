@@ -1,4 +1,3 @@
-include CONTRIBUTING.rst
 include LICENSE
-include README.rst
-recursive-include pusherable *.html *.png *.gif *js *.css *jpg *jpeg *svg *py
+include README.md
+recursive-include pusherable *.html *.py
